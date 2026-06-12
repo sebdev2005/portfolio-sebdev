@@ -1,3 +1,7 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,19 +9,31 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link href="https://db.onlinewebfonts.com/c/a67d98abe8980caaa1768b6e27b323c6?family=Typewriter" rel="stylesheet" type="text/css"/>
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Mi Portfolio</title>
 	</head>
-	<body>
+	<body class="overflow-x-hidden">
+		<Header />
 		<slot />
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: #0a0a0f;  
+  }
 </style>
+
+<script>
+  document.addEventListener('mousemove', (e) => {
+    document.body.style.background = `radial-gradient(300px circle at ${e.clientX}px ${e.clientY}px, rgba(120,80,255,0.12), #0a0a0f 60%)`;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    document.body.style.background = '#0a0a0f';
+  });
+</script>
