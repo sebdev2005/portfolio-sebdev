@@ -1,0 +1,110 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const skills = {
+  frontend: [
+    { nombre: 'React', icono: 'simple-icons:react' },
+    { nombre: 'Astro', icono: 'simple-icons:astro' },
+    { nombre: 'Tailwind', icono: 'simple-icons:tailwindcss' },
+    { nombre: 'TypeScript', icono: 'simple-icons:typescript' },
+    { nombre: 'JavaScript', icono: 'simple-icons:javascript' },
+    { nombre: 'HTML5', icono: 'simple-icons:html5' },
+  ],
+  backend: [
+    { nombre: 'Node.js', icono: 'simple-icons:nodedotjs' },
+    { nombre: 'Python', icono: 'simple-icons:python' },
+    { nombre: 'PostgreSQL', icono: 'simple-icons:postgresql' },
+    { nombre: 'Express', icono: 'simple-icons:express' },
+    { nombre: 'MongoDB', icono: 'simple-icons:mongodb' },
+    { nombre: 'Spring', icono: 'simple-icons:spring'},
+    { nombre: 'Java', icono: 'simple-icons:openjdk'},
+    { nombre: 'Django', icono: 'simple-icons:django'},
+    { nombre: 'C++', icono: 'simple-icons:cplusplus'},
+  ],
+  herramientas: [
+    { nombre: 'Docker', icono: 'simple-icons:docker' },
+    { nombre: 'Git', icono: 'simple-icons:git' },
+    { nombre: 'Linux', icono: 'simple-icons:linux' },
+    { nombre: 'AWS', icono: 'simple-icons:amazonaws' },
+  ],
+}
+---
+
+<section id="skills" class="relative text-white pb-0 pt-20 px-20 min-h-screen">
+    <span class="absolute bottom-0 right-0 text-[23rem] font-black text-[#7c6fff]/3 leading-none select-none pointer-events-none scale-x-70">
+        03
+    </span>
+    <div class="flex items-center gap-10 pb-10">
+        <p class="font-mono text-sm tracking-widest text-[#7c6fff] whitespace-nowrap uppercase">
+            03 / skills
+        </p>
+        <div class="flex-1 h-[1px] bg-gradient-to-r from-[#7c6fff] to-transparent">
+        </div>
+    </div>
+    <p class="uppercase font-display w-[500px] text-7xl pt-1 pb-5">
+        STACK <span class="text-[#7c6fff]">TECNOLOGICO</span>
+    </p>
+    <div class="grid grid-cols-3 gap-8">
+        <div class="border border-[#7c6fff]/20 p-6">
+            <p class="font-mono text-xs tracking-widest text-[#7c6fff] mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#7c6fff]"></span>
+                FRONTEND
+            </p>
+            <div class="grid grid-cols-3 gap-4">
+                {skills.frontend.map(skill => (
+                <div class="flex flex-col items-center gap-2 group">
+                    <Icon name={skill.icono} class="w-8 h-8 text-gray-500 group-hover:text-[#7c6fff] transition-colors duration-300" />
+                    <span class="font-mono text-xs text-gray-600 group-hover:text-gray-400 transition-colors">{skill.nombre}</span>
+                </div>
+                ))}
+            </div>
+            </div>
+
+            
+            <div class="border border-[#7c6fff]/20 p-6">
+            <p class="font-mono text-xs tracking-widest text-[#7c6fff] mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#7c6fff]"></span>
+                BACKEND
+            </p>
+            <div class="grid grid-cols-3 gap-4">
+                {skills.backend.map(skill => (
+                <div class="flex flex-col items-center gap-2 group">
+                    <Icon name={skill.icono} class="w-8 h-8 text-gray-500 group-hover:text-[#7c6fff] transition-colors duration-300" />
+                    <span class="font-mono text-xs text-gray-600 group-hover:text-gray-400 transition-colors">{skill.nombre}</span>
+                </div>
+                ))}
+            </div>
+            </div>
+
+
+            <div class="border border-[#7c6fff]/20 p-6">
+            <p class="font-mono text-xs tracking-widest text-[#7c6fff] mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#7c6fff]"></span>
+                HERRAMIENTAS
+            </p>
+            <div class="grid grid-cols-3 gap-4">
+                {skills.herramientas.map(skill => (
+                <div class="flex flex-col items-center gap-2 group">
+                    <Icon name={skill.icono} class="w-8 h-8 text-gray-500 group-hover:text-[#7c6fff] transition-colors duration-300" />
+                    <span class="font-mono text-xs text-gray-600 group-hover:text-gray-400 transition-colors">{skill.nombre}</span>
+                </div>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <div class="relative overflow-hidden py-4 border-y border-[#7c6fff]/20  mt-14 ">
+        <div class="flex gap-12 animate-marquee whitespace-nowrap">
+            {['React', 'TypeScript', 'JavaScript', 'Tailwind', 'CSS3', 'HTML5', 'Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'Docker', 'Git', 'Linux', 'Spring', 'Java'].map(tech => (
+            <span class="font-mono text-sm text-gray-400 flex items-center gap-3">
+                <span class="text-[#7c6fff]">--</span> {tech}
+            </span>
+            ))}
+            {['React', 'TypeScript', 'JavaScript', 'Tailwind', 'CSS3', 'HTML5', 'Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'Docker', 'Git', 'Linux', 'Spring', 'Java'].map(tech => (
+            <span class="font-mono text-sm text-gray-400 flex items-center gap-3">
+                <span class="text-[#7c6fff]">--</span> {tech}
+            </span>
+            ))}
+        </div>
+    </div>
+</section>
