@@ -18,18 +18,66 @@
             <p class="font-mono text-gray-400 pb-10">
                 Puedes conocer mas sobre mi y sobre como trabajo contactandote conmigo a traves de mis redes sociales. Normalmente respondo en menos de 24 horas.
             </p>
-            <div class="border-b border-[#7c6fff]/20 pb-3 relative">
-                <p class="font-mono text-xs text-gray-400/50">
+            <a 
+                href="https://github.com/SebasJRHub" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block border-b border-[#7c6fff]/20 pb-3 relative mb-5 cursor-pointer 
+                        transition-all duration-150
+                        hover:border-[#7c6fff]/60 hover:pl-2
+                        active:scale-95 active:opacity-70
+                        group"
+                >
+                <p class="font-mono text-xs text-gray-400/50 uppercase tracking-widest">
                     Github
                 </p>
                 <p>
                     @SebasJRHub
                 </p>
-                <span class="">
+                <span class="absolute top-3 right-0 font-mono text-sm text-gray-400/50">
                     🡥
                 </span>
-            </div>
+            </a>
+            <a 
+                href="https://www.linkedin.com/in/sebastian-santacruz-8a8a212a9/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="block border-b border-[#7c6fff]/20 pb-3 relative mb-5 cursor-pointer 
+                        transition-all duration-150
+                        hover:border-[#7c6fff]/60 hover:pl-2
+                        active:scale-95 active:opacity-70
+                        group"
+>
+                <p class="font-mono text-xs text-gray-400/50 uppercase tracking-widest">
+                    Linkein
+                </p>
+                <p>
+                    in/sebastian-santacruz
+                </p>
+                <span class="absolute top-3 right-0 font-mono text-sm text-gray-400/50">
+                    🡥
+                </span>
+            </a>
+            
         </div>
+        <form action="/api/contact" method="POST">
+            <div class="field flex flex-col gap-3 mb-5">
+                <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest">NOMBRE</label>
+                <input type="text" placeholder="Tu nombre completo" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 ">
+            </div>
+
+            <div class="field flex flex-col gap-3 mb-5">
+                <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest">EMAIL</label>
+                <input type="email" placeholder="tu@email.com" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 ">
+            </div>
+
+            <div class="field flex flex-col gap-3 mb-5">
+                <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest ">MENSAJE</label>
+                <textarea placeholder="Cuéntame sobre tu proyecto o idea..." class="resize-none border-b border-[#7c6fff]/20 pb-3 h-30 outline-none focus:outline-none focus:ring-0"></textarea>
+            </div>
+
+            <button>ENVIAR MENSAJE ↗</button>
+        </form>
         
     </div>
 
