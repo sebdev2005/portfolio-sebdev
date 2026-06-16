@@ -1,8 +1,9 @@
+// src/pages/api/contact.js
 import { Resend } from 'resend';
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 export async function POST({ request }) {
+  const resend = new Resend(import.meta.env.RESEND_API_KEY); // 👈 aquí adentro
+
   const data = await request.formData();
 
   await resend.emails.send({
@@ -16,5 +17,8 @@ export async function POST({ request }) {
     `
   });
 
-  return new Response('OK');
+  return new Response(JSON.stringify({ ok: true }), {
+  status: 200,
+  headers: { 'Content-Type': 'application/json' }
+});
 }

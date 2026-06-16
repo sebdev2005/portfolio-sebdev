@@ -1,4 +1,4 @@
-<section id="contacto" class="relative text-white pb-0 pt-30 px-20 min-h-screen">
+<section id="contacto" class="relative text-white pb-0 pt-20 px-20 min-h-screen">
     <span class="absolute bottom-30 right-0 text-[23rem] font-black text-[#7c6fff]/3 leading-none select-none pointer-events-none scale-x-70">
         06
     </span>
@@ -60,24 +60,80 @@
             </a>
             
         </div>
-        <form action="/api/contact" method="POST">
+        <form id="contact-form">
             <div class="field flex flex-col gap-3 mb-5">
                 <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest">NOMBRE</label>
-                <input type="text" placeholder="Tu nombre completo" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 ">
+                <input type="text" name="name" placeholder="Tu nombre completo" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 bg-transparent">
             </div>
 
             <div class="field flex flex-col gap-3 mb-5">
                 <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest">EMAIL</label>
-                <input type="email" placeholder="tu@email.com" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 ">
+                <input type="email" name="email" placeholder="tu@email.com" class="border-b border-[#7c6fff]/20 pb-3 outline-none focus:outline-none focus:ring-0 bg-transparent">
             </div>
 
             <div class="field flex flex-col gap-3 mb-5">
-                <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest ">MENSAJE</label>
-                <textarea placeholder="Cuéntame sobre tu proyecto o idea..." class="resize-none border-b border-[#7c6fff]/20 pb-3 h-30 outline-none focus:outline-none focus:ring-0"></textarea>
+                <label class="font-mono text-[#7c6fff] uppercase font-semibold text-xs tracking-widest">MENSAJE</label>
+                <textarea name="message" placeholder="Cuéntame sobre tu proyecto o idea..." class="resize-none border-b border-[#7c6fff]/20 pb-3 h-30 outline-none focus:outline-none focus:ring-0 bg-transparent"></textarea>
             </div>
 
-            <button>ENVIAR MENSAJE ↗</button>
+            <button type="submit" class="group relative overflow-hidden border border-[#7c6fff] px-6 py-3 font-mono text-xs tracking-widest text-white inline-block cursor-pointer">
+                <span class="absolute inset-0 w-0 bg-[#7c6fff] transition-all duration-300 group-hover:w-full"></span>
+                <span class="relative z-10" id="btn-text">ENVIAR MENSAJE</span>
+            </button>
         </form>
+
+        <div id="toast" class="fixed bottom-8 right-8 z-50 hidden">
+  <div class="border border-[#7c6fff] bg-[#0d0d0d] px-6 py-4 font-mono text-sm flex items-center gap-3">
+    <span class="text-[#7c6fff]">✓</span>
+    <span id="toast-msg">Mensaje enviado correctamente</span>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('contact-form');
+    var toast = document.getElementById('toast');
+    var toastMsg = document.getElementById('toast-msg');
+    var btnText = document.getElementById('btn-text');
+
+    if (!form) {
+      console.error('No se encontró el form');
+      return;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      btnText.textContent = 'ENVIANDO...';
+
+      fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      })
+      .then(function(res) {
+        if (res.ok) {
+          toastMsg.textContent = 'Mensaje enviado. Te respondo pronto!';
+          form.reset();
+        } else {
+          toastMsg.textContent = 'Algo salió mal. Intenta de nuevo.';
+        }
+      })
+      .catch(function() {
+        toastMsg.textContent = 'Error de conexión.';
+      })
+      .finally(function() {
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(function() {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 4000);
+        btnText.textContent = 'ENVIAR MENSAJE';
+      });
+    });
+  });
+</script>
         
     </div>
 
