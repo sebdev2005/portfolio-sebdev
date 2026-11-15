@@ -12,12 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^10.1.4",
-    "@astrojs/vercel": "^10.0.8",
+    "@astrojs/node": "^11.1.13",
+    "@astrojs/vercel": "^11.0.22",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.86",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.4.4",
+    "astro": "^7.4.12",
     "astro-icon": "^1.1.5",
     "gsap": "^3.15.0",
     "resend": "^6.12.4",
